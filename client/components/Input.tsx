@@ -1,15 +1,20 @@
 import tw from "tailwind-styled-components";
 
-const Input = tw.input`
+interface InputProps {
+	$margin?: string;
+	$padding?: string;
+	$width?: string;
+	$height?: string;
+}
+
+export const Input = tw.input`
     border
     text-xs
     rounded
     border-black
+    ${(p: InputProps) => (p.$margin ? p.$margin : "my-2")}
     p-2
-    mb-6
     h-10
     w-72
     focus:outline-blue
 `;
-
-export default Input;

@@ -6,7 +6,7 @@ interface Props {
 	url?: string;
 }
 
-export default function HeadMeta({ title, description, url }: Props) {
+export function HeadMeta({ title, description, url }: Props) {
 	return (
 		<Head>
 			<title>{title || "Tech IT"}</title>
