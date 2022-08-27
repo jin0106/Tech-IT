@@ -8,7 +8,10 @@ import {
 	ErrorText,
 	Container,
 	Title,
+	Button,
+	MovePage,
 } from "@components/index";
+import Link from "next/link";
 
 interface InputProps {
 	email: string;
@@ -133,7 +136,7 @@ function SignUpPage() {
 								message: "Please enter a valid mobile phone number.",
 							},
 						})}
-						type="text"
+						type="tel"
 						placeholder="Phone Number"
 					/>
 					<ErrorMessage
@@ -141,7 +144,12 @@ function SignUpPage() {
 						name="phoneNumber"
 						render={({ message }) => <ErrorText>{message}</ErrorText>}
 					/>
-					<input type="submit" />
+					<Button>Create an Account</Button>
+					<MovePage
+						paragraph="Already have an account?"
+						link="/login"
+						description="Sign In"
+					/>
 				</Form>
 			</Container>
 		</>
