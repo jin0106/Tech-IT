@@ -1,10 +1,15 @@
 import tw from "tailwind-styled-components";
 
-export const Button = tw.button`
-  w-72
+interface ButtonProps {
+	$width?: string;
+	$color?: string;
+}
+
+export const Button = tw.button<ButtonProps>`
+  ${(p: ButtonProps) => (p.$width ? p.$width : "w-72")}
   h-10
   rounded
-  bg-sky-500
+  ${(p: ButtonProps) => (p.$color ? p.$color : "bg-sky-500")}
   text-white
   font-medium
   my-4
