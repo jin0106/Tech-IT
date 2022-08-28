@@ -1031,6 +1031,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@hookform/error-message@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@hookform/error-message/-/error-message-2.0.0.tgz#9b1b037fd816ea9b1531c06aa7fab5f5154aa740"
+  integrity sha512-Y90nHzjgL2MP7GFy75kscdvxrCTjtyxGmOLLxX14nd08OXRIh9lMH/y9Kpdo0p1IPowJBiZMHyueg7p+yrqynQ==
+
 "@humanwhocodes/config-array@^0.10.4":
   version "0.10.4"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.10.4.tgz"
@@ -4352,6 +4357,11 @@ quick-lru@^5.1.1:
   resolved "https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
+react-daum-postcode@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-daum-postcode/-/react-daum-postcode-3.1.1.tgz#8d349a45177cc88cc69e9f94dcc56ebc41a1d420"
+  integrity sha512-IFlC8XBSK+uobSIBHaWlxeecYpv9RhCFNu4YJ3+CrfGyEVdc4+yaaUH6BIfJbTZOybVx0V3s4nUeAEsssXBNJg==
+
 react-dom@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
@@ -4359,6 +4369,11 @@ react-dom@18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-hook-form@^7.34.2:
+  version "7.34.2"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.34.2.tgz#9ac6d1a309a7c4aaa369d1269357a70e9e9bf4de"
+  integrity sha512-1lYWbEqr0GW7HHUjMScXMidGvV0BE2RJV3ap2BL7G0EJirkqpccTaawbsvBO8GZaB3JjCeFBEbnEWI1P8ZoLRQ==
 
 "react-is@^16.12.0 || ^17.0.0 || ^18.0.0", react-is@^18.0.0, react-is@^18.2.0:
   version "18.2.0"
