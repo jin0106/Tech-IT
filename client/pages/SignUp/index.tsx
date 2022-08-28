@@ -10,8 +10,8 @@ import {
 	Title,
 	Button,
 	MovePage,
+	FindAddress,
 } from "@components/index";
-import Link from "next/link";
 
 interface InputProps {
 	email: string;
@@ -19,6 +19,7 @@ interface InputProps {
 	passwordConfirm: string;
 	name: string;
 	phoneNumber: number | null;
+	address: string;
 }
 
 function SignUpPage() {
@@ -31,6 +32,7 @@ function SignUpPage() {
 		formState: { errors },
 		handleSubmit,
 		getValues,
+		control,
 	} = useForm<InputProps>({
 		mode: "onBlur",
 		defaultValues: {
@@ -39,6 +41,7 @@ function SignUpPage() {
 			passwordConfirm: "",
 			name: "",
 			phoneNumber: null,
+			address: "",
 		},
 	});
 
@@ -67,7 +70,10 @@ function SignUpPage() {
 					<Input
 						{...register("password", {
 							required: "Please enter a password.",
-							minLength: { value: 8, message: "최소 8자 이상 입력해주세요" },
+							minLength: {
+								value: 8,
+								message: "Password should be at least 8 characters",
+							},
 							maxLength: 20,
 							pattern: {
 								value: /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W))(?=.*[!@#$%^*+=-])/,
@@ -85,7 +91,10 @@ function SignUpPage() {
 					<Input
 						{...register("passwordConfirm", {
 							required: "Please reenter your password.",
-							minLength: { value: 8, message: "최소 8자 이상 입력해주세요" },
+							minLength: {
+								value: 8,
+								message: "Password should be at least 8 characters",
+							},
 							maxLength: 20,
 							pattern: {
 								value: /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W))(?=.*[!@#$%^*+=-])/,
@@ -144,6 +153,8 @@ function SignUpPage() {
 						name="phoneNumber"
 						render={({ message }) => <ErrorText>{message}</ErrorText>}
 					/>
+					<FindAddress />
+
 					<Button>Create an Account</Button>
 					<MovePage
 						paragraph="Already have an account?"
