@@ -1,5 +1,9 @@
-import tw from "tailwind-styled-components";
+interface ErrorTextProps {
+	text: string;
+}
 
-export const ErrorText = tw.span`
-	text-red-600
-`;
+export const ErrorText = ({ text }: ErrorTextProps) => (
+	<span className="text-red-600" role="error-text">
+		{text}
+	</span>
+);
