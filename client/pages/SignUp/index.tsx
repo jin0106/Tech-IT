@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import React from "react";
 import {
 	Form,
 	HeadMeta,
@@ -32,7 +31,6 @@ function SignUpPage() {
 		formState: { errors },
 		handleSubmit,
 		getValues,
-		control,
 	} = useForm<InputProps>({
 		mode: "onBlur",
 		defaultValues: {
@@ -41,7 +39,6 @@ function SignUpPage() {
 			passwordConfirm: "",
 			name: "",
 			phoneNumber: null,
-			address: "",
 		},
 	});
 
@@ -65,7 +62,7 @@ function SignUpPage() {
 					<ErrorMessage
 						errors={errors}
 						name="email"
-						render={({ message }) => <ErrorText>{message}</ErrorText>}
+						render={({ message }) => <ErrorText text={message} />}
 					/>
 					<Input
 						{...register("password", {
@@ -86,7 +83,7 @@ function SignUpPage() {
 					<ErrorMessage
 						errors={errors}
 						name="password"
-						render={({ message }) => <ErrorText>{message}</ErrorText>}
+						render={({ message }) => <ErrorText text={message} />}
 					/>
 					<Input
 						{...register("passwordConfirm", {
@@ -113,7 +110,7 @@ function SignUpPage() {
 					<ErrorMessage
 						errors={errors}
 						name="passwordConfirm"
-						render={({ message }) => <ErrorText>{message}</ErrorText>}
+						render={({ message }) => <ErrorText text={message} />}
 					/>
 					<Input
 						{...register("name", {
@@ -130,7 +127,7 @@ function SignUpPage() {
 					<ErrorMessage
 						errors={errors}
 						name="name"
-						render={({ message }) => <ErrorText>{message}</ErrorText>}
+						render={({ message }) => <ErrorText text={message} />}
 					/>
 					<Input
 						{...register("phoneNumber", {
@@ -151,7 +148,7 @@ function SignUpPage() {
 					<ErrorMessage
 						errors={errors}
 						name="phoneNumber"
-						render={({ message }) => <ErrorText>{message}</ErrorText>}
+						render={({ message }) => <ErrorText text={message} />}
 					/>
 					<FindAddress />
 
