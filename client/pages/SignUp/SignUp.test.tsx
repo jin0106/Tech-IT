@@ -1,9 +1,18 @@
-import { render, screen } from "@testing-library/react";
+import {
+	render,
+	screen,
+	waitFor,
+	waitForElementToBeRemoved,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SignUpPage from "./index";
-
+import { RecoilRoot } from "recoil";
 beforeEach(() => {
-	render(<SignUpPage />);
+	render(
+		<RecoilRoot>
+			<SignUpPage />
+		</RecoilRoot>
+	);
 });
 describe("SignUp Page", () => {
 	describe("Layout", () => {
@@ -32,27 +41,45 @@ describe("SignUp Page", () => {
 			expect(name).toBeInTheDocument();
 		});
 		it("has submit button", () => {
-			const button = screen.getByText("Sign Up");
+			const button = screen.getByText("Create an Account");
 			expect(button).toBeInTheDocument();
-		});
-
-		it("check if button is disabled initially", () => {
-			const button = screen.getByText("Sign Up");
-			expect(button).toBeDisabled();
 		});
 	});
 
 	describe("interaction", () => {
-		it("enables the button when email and both password input are filled", () => {
-			const emailInput = screen.getByPlaceholderText("Email");
+		it("error messages will be showed up if you click Create an Account button", async () => {
+			const Button = screen.getByText("Create an Account");
+			userEvent.click(Button);
+			await waitFor(() => {
+				const errorMessages = screen.getAllByRole("error-message");
+				expect(errorMessages).toHaveLength(5);
+			});
+		});
+
+		it("nothing will be showed up if you click a button when all inputs are filled ", async () => {
+			const Button = screen.getByText("Create an Account");
+			const emailInput = screen.getByPlaceholderText("Email Address");
 			const passwordInput = screen.getByPlaceholderText("Password");
-			const confrimPasswordInput =
+			const passwordConfirmInput =
 				screen.getByPlaceholderText("Confirm Password");
-			const Button = screen.getByText("Sign Up");
-			userEvent.type(emailInput, "wjinh@naver.com");
-			userEvent.type(passwordInput, "test1234!");
-			userEvent.type(confrimPasswordInput, "test1234!");
-			expect(Button).toBeEnabled();
+			const nameInput = screen.getByPlaceholderText("Full Name");
+			const phoneInput = screen.getByPlaceholderText("Phone Number");
+			await userEvent.type(emailInput, "test123@gmail.com");
+			await userEvent.type(passwordInput, "test1234!");
+			await userEvent.type(passwordConfirmInput, "test1234!@");
+			await userEvent.type(nameInput, "test");
+			await userEvent.type(phoneInput, "010-1234-1234");
+			await waitFor(() => {
+				expect(screen.getByText("Passwords do not match.")).toBeInTheDocument();
+			});
+			await userEvent.click(Button);
+
+			await userEvent.clear(passwordConfirmInput);
+			await userEvent.type(passwordConfirmInput, "test1234!");
+			await waitFor(() => {
+				const error = screen.queryAllByRole("error-message");
+				expect(error).toHaveLength(0);
+			});
 		});
 	});
 });
