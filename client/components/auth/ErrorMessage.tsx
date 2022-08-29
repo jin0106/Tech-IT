@@ -1,9 +1,9 @@
 interface ErrorTextProps {
-	text: string;
+	message: string;
 }
 
-export const ErrorText = ({ text }: ErrorTextProps) => (
+export const ErrorText = ({ message }: ErrorTextProps) => (
 	<span className="text-red-600" role="error-text">
-		{text}
+		{message}
 	</span>
 );

@@ -62,7 +62,7 @@ function SignUpPage() {
 					<ErrorMessage
 						errors={errors}
 						name="email"
-						render={({ message }) => <ErrorText text={message} />}
+						render={({ message }) => <ErrorText message={message} />}
 					/>
 					<Input
 						{...register("password", {
@@ -83,7 +83,7 @@ function SignUpPage() {
 					<ErrorMessage
 						errors={errors}
 						name="password"
-						render={({ message }) => <ErrorText text={message} />}
+						render={({ message }) => <ErrorText message={message} />}
 					/>
 					<Input
 						{...register("passwordConfirm", {
@@ -110,7 +110,7 @@ function SignUpPage() {
 					<ErrorMessage
 						errors={errors}
 						name="passwordConfirm"
-						render={({ message }) => <ErrorText text={message} />}
+						render={({ message }) => <ErrorText message={message} />}
 					/>
 					<Input
 						{...register("name", {
@@ -127,7 +127,7 @@ function SignUpPage() {
 					<ErrorMessage
 						errors={errors}
 						name="name"
-						render={({ message }) => <ErrorText text={message} />}
+						render={({ message }) => <ErrorText message={message} />}
 					/>
 					<Input
 						{...register("phoneNumber", {
@@ -148,7 +148,7 @@ function SignUpPage() {
 					<ErrorMessage
 						errors={errors}
 						name="phoneNumber"
-						render={({ message }) => <ErrorText text={message} />}
+						render={({ message }) => <ErrorText message={message} />}
 					/>
 					<FindAddress />
 
