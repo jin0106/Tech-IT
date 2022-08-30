@@ -1,5 +1,10 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import SignIn from ".";
+
+beforeEach(() => {
+	render(<SignIn />);
+});
 
 describe("SignIn page", () => {
 	describe("layout", () => {
