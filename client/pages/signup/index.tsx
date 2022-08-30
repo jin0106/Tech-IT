@@ -11,18 +11,10 @@ import {
 	MovePage,
 	FindAddress,
 } from "@components/index";
-
-interface InputProps {
-	email: string;
-	password: string;
-	passwordConfirm: string;
-	name: string;
-	phoneNumber: number | null;
-	address: string;
-}
+import SignUpType from "./SignUpType";
 
 function SignUpPage() {
-	const onSubmitButton = (data: InputProps) => {
+	const onSubmitButton = (data: SignUpType) => {
 		console.log(data);
 	};
 
@@ -31,7 +23,7 @@ function SignUpPage() {
 		formState: { errors },
 		handleSubmit,
 		getValues,
-	} = useForm<InputProps>({
+	} = useForm<SignUpType>({
 		mode: "onBlur",
 		defaultValues: {
 			email: "",
