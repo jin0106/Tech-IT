@@ -9,4 +9,5 @@ export const Form = tw.form`
   p-6
   bg-white
   border
+  w-96
 `;
