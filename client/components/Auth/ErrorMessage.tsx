@@ -3,7 +3,7 @@ interface ErrorTextProps {
 }
 
 export const ErrorText = ({ message }: ErrorTextProps) => (
-	<span className="text-red-600" role="error-message">
+	<span className="text-red-600 text-sm text-center" role="error-message">
 		{message}
 	</span>
 );
