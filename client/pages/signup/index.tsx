@@ -147,7 +147,7 @@ function SignUpPage() {
 					<Button>Create an Account</Button>
 					<MovePage
 						paragraph="Already have an account?"
-						link="/login"
+						link="/signin"
 						description="Sign In"
 					/>
 				</Form>
