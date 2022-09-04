@@ -6,9 +6,6 @@ import {
 	Input,
 	ErrorText,
 	Container,
-	Title,
-	Button,
-	MovePage,
 	FindAddress,
 } from "@components/index";
 import SignUpType from "./SignUpType";
@@ -38,8 +35,14 @@ function SignUpPage() {
 		<>
 			<HeadMeta title="Tech-IT: Create an account" description="SignUp Page" />
 			<Container title="Sign Up">
-				<Form onSubmit={handleSubmit(onSubmitButton)}>
-					<Title>Create an account</Title>
+				<Form
+					handleSubmit={handleSubmit(onSubmitButton)}
+					title="Create an Account"
+					paragraph="Already have an account?"
+					link="/signin"
+					description="Sign In"
+					buttonText="Create an Account"
+				>
 					<Input
 						{...register("email", {
 							required: "Please enter a email address",
@@ -143,13 +146,6 @@ function SignUpPage() {
 						render={({ message }) => <ErrorText message={message} />}
 					/>
 					<FindAddress />
-
-					<Button>Create an Account</Button>
-					<MovePage
-						paragraph="Already have an account?"
-						link="/signin"
-						description="Sign In"
-					/>
 				</Form>
 			</Container>
 		</>

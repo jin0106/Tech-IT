@@ -2,18 +2,10 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import SignUpType from "@pages/signup/SignUpType";
 import { HeadMeta } from "@components/HeadMeta";
-import {
-	Button,
-	Container,
-	ErrorText,
-	Form,
-	Input,
-	MovePage,
-	Title,
-} from "@components/index";
+import { Container, ErrorText, Form, Input } from "@components/index";
 
 function SignIn() {
-	const onSubmit = () => {};
+	const onSubmit = (data: Pick<SignUpType, "email" | "password">) => {};
 
 	const {
 		register,
@@ -28,8 +20,14 @@ function SignIn() {
 		<>
 			<HeadMeta title="Tech-IT: Sign In to Tech-IT" description="SignIn Page" />
 			<Container title="Sign In">
-				<Form onSubmit={handleSubmit(onSubmit)}>
-					<Title>Sign In to Tech-IT</Title>
+				<Form
+					handleSubmit={handleSubmit(onSubmit)}
+					title="Sign In to Tech-It"
+					paragraph="Don't have an account?"
+					link="/signup"
+					description="Sign Up"
+					buttonText="Sign In"
+				>
 					<Input
 						{...register("email", {
 							required: "Please enter a email address",
@@ -67,12 +65,6 @@ function SignIn() {
 						errors={errors}
 						name="password"
 						render={({ message }) => <ErrorText message={message} />}
-					/>
-					<Button>Sign In</Button>
-					<MovePage
-						paragraph="Don't have an account?"
-						link="/signup"
-						description="Sign Up"
 					/>
 				</Form>
 			</Container>

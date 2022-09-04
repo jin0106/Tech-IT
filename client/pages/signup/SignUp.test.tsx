@@ -36,14 +36,14 @@ describe("SignUp Page", () => {
 			expect(name).toBeInTheDocument();
 		});
 		it("has submit button", () => {
-			const button = screen.getByText("Create an Account");
+			const button = screen.getByRole("submit-button");
 			expect(button).toBeInTheDocument();
 		});
 	});
 
 	describe("interaction", () => {
 		it("error messages will be showed up if you click Create an Account button", async () => {
-			const Button = screen.getByText("Create an Account");
+			const Button = screen.getByRole("submit-button");
 			userEvent.click(Button);
 			await waitFor(() => {
 				const errorMessages = screen.getAllByRole("error-message");
@@ -52,7 +52,7 @@ describe("SignUp Page", () => {
 		});
 
 		it("nothing will be showed up if you click a button when all inputs are filled ", async () => {
-			const Button = screen.getByText("Create an Account");
+			const Button = screen.getByRole("submit-button");
 			const emailInput = screen.getByPlaceholderText("Email Address");
 			const passwordInput = screen.getByPlaceholderText("Password");
 			const passwordConfirmInput =
