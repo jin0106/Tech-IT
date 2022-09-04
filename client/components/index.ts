@@ -5,3 +5,4 @@ export { FindAddress as FindAddress } from "./FindAddress";
 export { Container as Container } from "./Auth/Container";
 export { Input as Input } from "./Input";
 export { Button as Button } from "./Button";
+export { Footer as Footer } from "./Footer";
