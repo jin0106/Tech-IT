@@ -1,6 +1,12 @@
+import SignUpType from "@pages/signup/SignUpType";
 import { atom } from "recoil";
 
-export const addressState = atom({
-	key: "address",
-	default: "",
-});
+export const addressState = atom<Pick<SignUpType, "address" | "addressDetail">>(
+	{
+		key: "address",
+		default: {
+			address: "",
+			addressDetail: "",
+		},
+	}
+);
