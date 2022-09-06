@@ -2,9 +2,10 @@ interface SignUpType {
 	email: string;
 	password: string;
 	passwordConfirm: string;
-	name: string;
+	username: string;
 	phoneNumber: number | null;
 	address: string;
+	addressDetail?: string;
 }
 
 export default SignUpType;

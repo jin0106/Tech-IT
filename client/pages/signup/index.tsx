@@ -9,28 +9,42 @@ import {
 	FindAddress,
 } from "@components/index";
 import SignUpType from "./SignUpType";
+import useSignUp from "@hooks/query/useSignUp";
+import { useRecoilValue } from "recoil";
+import { addressState } from "recoil/addressState";
 
 function SignUpPage() {
-	const onSubmitButton = (data: SignUpType) => {
-		console.log(data);
-	};
-
+	const address = useRecoilValue(addressState);
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 		getValues,
-	} = useForm<SignUpType>({
+	} = useForm({
 		mode: "onBlur",
 		defaultValues: {
 			email: "",
 			password: "",
 			passwordConfirm: "",
-			name: "",
+			username: "",
 			phoneNumber: null,
 		},
 	});
 
+	const { mutate: signUp } = useSignUp({
+		onSuccess: () => {
+			console.log("hi");
+		},
+		onError: () => {
+			console.log("fail");
+		},
+	});
+	const onSubmitButton = (
+		data: Omit<SignUpType, "address" | "addressDetail">
+	) => {
+		const info = { ...data, ...address };
+		signUp(info);
+	};
 	return (
 		<>
 			<HeadMeta title="Tech-IT: Create an account" description="SignUp Page" />
@@ -108,7 +122,7 @@ function SignUpPage() {
 						render={({ message }) => <ErrorText message={message} />}
 					/>
 					<Input
-						{...register("name", {
+						{...register("username", {
 							required: "Please enter a name",
 							minLength: {
 								value: 2,
@@ -121,7 +135,7 @@ function SignUpPage() {
 					/>
 					<ErrorMessage
 						errors={errors}
-						name="name"
+						name="username"
 						render={({ message }) => <ErrorText message={message} />}
 					/>
 					<Input
