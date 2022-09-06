@@ -1,9 +1,7 @@
 import axios from "axios";
 
-const baseURL = process.env.API_URL;
-
 const request = axios.create({
-	baseURL,
+	baseURL: process.env.NEXT_PUBLIC_URL,
 	timeout: 10000,
 	headers: { "Content-Type": "application/json" },
 });
