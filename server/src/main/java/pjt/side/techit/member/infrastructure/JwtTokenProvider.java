@@ -1,4 +1,4 @@
-package pjt.side.techit.auth.infrastructure;
+package pjt.side.techit.member.infrastructure;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -20,8 +20,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import pjt.side.techit.auth.controller.dto.response.TokenResponse;
-import pjt.side.techit.auth.domain.Authority;
+import pjt.side.techit.member.controller.dto.response.TokenResponse;
+import pjt.side.techit.member.domain.Authority;
 import pjt.side.techit.global.exception.BusinessException;
 import pjt.side.techit.global.exception.ErrorCode;
 import pjt.side.techit.global.exception.JwtException;

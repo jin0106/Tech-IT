@@ -1,4 +1,4 @@
-package pjt.side.techit.auth.controller.dto.response;
+package pjt.side.techit.member.controller.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
