@@ -4,13 +4,17 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pjt.side.techit.member.controller.dto.request.EmailRequest;
+import pjt.side.techit.member.controller.dto.request.LoginRequest;
 import pjt.side.techit.member.controller.dto.request.MemberSaveRequest;
+import pjt.side.techit.member.controller.dto.request.ReissueRequest;
+import pjt.side.techit.member.controller.dto.response.CheckDuplicateResponse;
 import pjt.side.techit.member.service.MemberService;
 
 @RestController
@@ -35,12 +39,9 @@ public class MemberRestController {
     }
 
     @PostMapping("/members/exist-email")
-    @ApiOperation(value = "email 중복검사", notes = "email 중복 검사")
-    @ApiResponses({
-        @ApiResponse(code = 409, message = "CONFLICT\n로그인 아이디 중복(M02)")
-    })
-    public ResponseEntity<Void> checkDuplicatedEmail(@RequestBody EmailRequest request) {
-        memberService.checkDuplicatedEmail(request.getEmail());
-        return ResponseEntity.ok().build();
+    @ApiOperation(value = "email 중복검사", notes = "email 중복 검사 \n 중복일 경우 true \n 중복이 아닐 경우 false")
+    public ResponseEntity<CheckDuplicateResponse> checkDuplicatedEmail(
+        @RequestBody EmailRequest request) {
+        return ResponseEntity.ok().body(memberService.checkDuplicatedEmail(request));
     }
 }
