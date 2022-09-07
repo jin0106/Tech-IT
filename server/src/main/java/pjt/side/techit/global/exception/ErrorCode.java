@@ -28,7 +28,9 @@ public enum ErrorCode {
     AUTHORITY_ACCESS_DENIED(HttpStatus.UNAUTHORIZED, "접근 권한이 없는 권한코드입니다.", "A02"),
     AUTHORITY_ENTRY_POINT(HttpStatus.UNAUTHORIZED, "오류가 있는 권한코드입니다.", "A03"),
 
-    MEMBER_EMAIL_DUPLICATED(HttpStatus.CONFLICT, "이미 존재하는 이메일입니다.", "M01")
+    MEMBER_EMAIL_DUPLICATED(HttpStatus.CONFLICT, "이미 존재하는 이메일입니다.", "M01"),
+    MEMBER_NOT_FOUND_BY_EMAIL(HttpStatus.NOT_FOUND, "존재하지 않는 이메일입니다.", "M02"),
+    MEMBER_LOGIN_ERROR_BY_PASSWORD(HttpStatus.CONFLICT, "비밀번호가 일치하지 않습니다.", "M03")
     ;
 
     private final HttpStatus httpStatus;
