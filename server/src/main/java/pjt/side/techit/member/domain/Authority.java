@@ -1,4 +1,4 @@
-package pjt.side.techit.auth.domain;
+package pjt.side.techit.member.domain;
 
 import java.util.Arrays;
 import pjt.side.techit.global.exception.BusinessException;
