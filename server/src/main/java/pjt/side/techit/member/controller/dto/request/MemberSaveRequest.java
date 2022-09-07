@@ -13,7 +13,7 @@ public class MemberSaveRequest {
     private String email;
 
     @JsonProperty("password")
-    @ApiModelProperty(position = 2, notes = "비밀번호", example = "duswnWkd1!")
+    @ApiModelProperty(position = 2, notes = "비밀번호", example = "cnlQhgkwk1!")
     private String password;
 
     @JsonProperty("username")
