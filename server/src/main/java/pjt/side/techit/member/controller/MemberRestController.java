@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pjt.side.techit.member.controller.dto.request.EmailRequest;
 import pjt.side.techit.member.controller.dto.request.MemberSaveRequest;
 import pjt.side.techit.member.service.MemberService;
 
@@ -30,6 +31,16 @@ public class MemberRestController {
     })
     public ResponseEntity<Void> join(@RequestBody MemberSaveRequest request) {
         memberService.saveMember(request);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/members/exist-email")
+    @ApiOperation(value = "email 중복검사", notes = "email 중복 검사")
+    @ApiResponses({
+        @ApiResponse(code = 409, message = "CONFLICT\n로그인 아이디 중복(M02)")
+    })
+    public ResponseEntity<Void> checkDuplicatedEmail(@RequestBody EmailRequest request) {
+        memberService.checkDuplicatedEmail(request.getEmail());
+        return ResponseEntity.ok().build();
     }
 }
