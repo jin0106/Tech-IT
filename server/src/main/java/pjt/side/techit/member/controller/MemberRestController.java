@@ -44,4 +44,15 @@ public class MemberRestController {
         @RequestBody EmailRequest request) {
         return ResponseEntity.ok().body(memberService.checkDuplicatedEmail(request));
     }
-}
+
+    @PostMapping("/members/login")
+    @ApiOperation(value = "로그인", notes = "로그인")
+    @ApiResponses({
+        @ApiResponse(code = 409, message = "CONFLICT 일치하지 않는 비밀번호입니다."),
+        @ApiResponse(code = 404, message = "NOT FOUND 존재하지 않는 이메일입니다.")
+    })
+    public ResponseEntity<Void> login(@RequestBody LoginRequest request,
+        HttpServletResponse response) {
+        memberService.login(request, response);
+        return ResponseEntity.ok().build();
+    }
