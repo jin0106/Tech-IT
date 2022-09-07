@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { addressState } from "recoil/addressState";
 import useSignUp from "@hooks/query/useSignUp";
+import authApi from "@apis/auth";
 import SignUpType from "./SignUpType";
 import { Form, HeadMeta, Input, ErrorText, Container, FindAddress } from "@components/index";
-import authApi from "@apis/auth";
-import { useState } from "react";
 
 function SignUpPage() {
 	const [isExist, setIsExist] = useState(false);
@@ -32,9 +32,6 @@ function SignUpPage() {
 	const { mutate: signUp } = useSignUp({
 		onSuccess: () => {
 			router.push("/signin");
-		},
-		onError: () => {
-			console.log("fail");
 		},
 	});
 	const checkDuplicate = async () => {
