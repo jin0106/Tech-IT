@@ -1,19 +1,19 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import {
-	Form,
-	HeadMeta,
-	Input,
-	ErrorText,
-	Container,
-	FindAddress,
-} from "@components/index";
-import SignUpType from "./SignUpType";
-import useSignUp from "@hooks/query/useSignUp";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { addressState } from "recoil/addressState";
+import useSignUp from "@hooks/query/useSignUp";
+import authApi from "@apis/auth";
+import SignUpType from "./SignUpType";
+import { Form, HeadMeta, Input, ErrorText, Container, FindAddress } from "@components/index";
+import useToastMessage from "@utils/useToast";
+import toast, { Toaster } from "react-hot-toast";
 
 function SignUpPage() {
+	const [isExist, setIsExist] = useState(false);
+	const router = useRouter();
 	const address = useRecoilValue(addressState);
 	const {
 		register,
@@ -33,15 +33,19 @@ function SignUpPage() {
 
 	const { mutate: signUp } = useSignUp({
 		onSuccess: () => {
-			console.log("hi");
+			useToastMessage("Thank you. Your Registration has been completed successfully.", "success");
+			router.push("/signin");
 		},
 		onError: () => {
-			console.log("fail");
+			useToastMessage("Something is Wrong. Please try again", "error");
 		},
 	});
-	const onSubmitButton = (
-		data: Omit<SignUpType, "address" | "addressDetail">
-	) => {
+	const checkDuplicate = async () => {
+		const { email } = getValues();
+		const { result } = await authApi.isEmailExist(email);
+		setIsExist(result);
+	};
+	const onSubmitButton = (data: Omit<SignUpType, "address" | "addressDetail">) => {
 		const info = { ...data, ...address };
 		signUp(info);
 	};
@@ -61,18 +65,15 @@ function SignUpPage() {
 						{...register("email", {
 							required: "Please enter a email address",
 							pattern: {
-								value:
-									/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
+								value: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
 								message: "Please enter a valid email address",
 							},
+							onBlur: checkDuplicate,
 						})}
 						placeholder="Email Address"
 					/>
-					<ErrorMessage
-						errors={errors}
-						name="email"
-						render={({ message }) => <ErrorText message={message} />}
-					/>
+					{isExist && <ErrorText message="This email address is already registerd" />}
+					<ErrorMessage errors={errors} name="email" render={({ message }) => <ErrorText message={message} />} />
 					<Input
 						{...register("password", {
 							required: "Please enter a password.",
@@ -89,11 +90,7 @@ function SignUpPage() {
 						type="password"
 						placeholder="Password"
 					/>
-					<ErrorMessage
-						errors={errors}
-						name="password"
-						render={({ message }) => <ErrorText message={message} />}
-					/>
+					<ErrorMessage errors={errors} name="password" render={({ message }) => <ErrorText message={message} />} />
 					<Input
 						{...register("passwordConfirm", {
 							required: "Please reenter your password.",
@@ -116,11 +113,7 @@ function SignUpPage() {
 						type="password"
 						placeholder="Confirm Password"
 					/>
-					<ErrorMessage
-						errors={errors}
-						name="passwordConfirm"
-						render={({ message }) => <ErrorText message={message} />}
-					/>
+					<ErrorMessage errors={errors} name="passwordConfirm" render={({ message }) => <ErrorText message={message} />} />
 					<Input
 						{...register("username", {
 							required: "Please enter a name",
@@ -133,11 +126,7 @@ function SignUpPage() {
 						type="text"
 						placeholder="Full Name"
 					/>
-					<ErrorMessage
-						errors={errors}
-						name="username"
-						render={({ message }) => <ErrorText message={message} />}
-					/>
+					<ErrorMessage errors={errors} name="username" render={({ message }) => <ErrorText message={message} />} />
 					<Input
 						{...register("phoneNumber", {
 							required: "Please enter a mobile phone Number",
@@ -154,11 +143,7 @@ function SignUpPage() {
 						type="tel"
 						placeholder="Phone Number"
 					/>
-					<ErrorMessage
-						errors={errors}
-						name="phoneNumber"
-						render={({ message }) => <ErrorText message={message} />}
-					/>
+					<ErrorMessage errors={errors} name="phoneNumber" render={({ message }) => <ErrorText message={message} />} />
 					<FindAddress />
 				</Form>
 			</Container>
