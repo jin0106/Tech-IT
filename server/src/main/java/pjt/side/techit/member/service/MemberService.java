@@ -22,14 +22,15 @@ public class MemberService {
 
     @Transactional
     public Long saveMember(MemberSaveRequest request) {
-        checkDuplicateLoginId(request.getEmail());
+        checkDuplicatedEmail(request.getEmail());
 
         Member member = request.toMember();
         member.encodePassword(passwordEncoder);
         return memberRepository.save(member).getId();
     }
 
-    private void checkDuplicateLoginId(String email) {
+    @Transactional
+    public void checkDuplicatedEmail(String email) {
         if(memberRepository.existsByEmail(email)) {
             throw new BusinessException(ErrorCode.MEMBER_EMAIL_DUPLICATED);
         }
