@@ -12,8 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import pjt.side.techit.auth.domain.Authority;
-import pjt.side.techit.auth.infrastructure.JwtTokenProvider;
+import pjt.side.techit.member.domain.Authority;
+import pjt.side.techit.member.infrastructure.JwtTokenProvider;
 import pjt.side.techit.global.security.JwtAccessDeniedHandler;
 import pjt.side.techit.global.security.JwtAuthenticationEntryPoint;
 

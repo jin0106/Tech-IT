@@ -4,7 +4,7 @@ import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import pjt.side.techit.auth.infrastructure.JwtTokenProvider;
+import pjt.side.techit.member.infrastructure.JwtTokenProvider;
 import pjt.side.techit.global.security.JwtExceptionFilter;
 import pjt.side.techit.global.security.JwtFilter;
 

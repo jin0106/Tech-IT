@@ -13,7 +13,7 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
-import pjt.side.techit.auth.infrastructure.JwtTokenProvider;
+import pjt.side.techit.member.infrastructure.JwtTokenProvider;
 
 public class JwtFilter extends OncePerRequestFilter {
 

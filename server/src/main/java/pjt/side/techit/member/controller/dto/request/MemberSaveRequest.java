@@ -13,14 +13,14 @@ public class MemberSaveRequest {
     private String email;
 
     @JsonProperty("password")
-    @ApiModelProperty(position = 2, notes = "비밀번호", example = "duswnWkd1!")
+    @ApiModelProperty(position = 2, notes = "비밀번호", example = "cnlQhgkwk1!")
     private String password;
 
     @JsonProperty("username")
     @ApiModelProperty(position = 3, notes = "유저네임", example = "김텤잇")
     private String username;
 
-    @JsonProperty("phone_number")
+    @JsonProperty("phoneNumber")
     @ApiModelProperty(position = 4, notes = "휴대전화번호", example = "01047841769")
     private String phoneNumber;
 
@@ -28,7 +28,7 @@ public class MemberSaveRequest {
     @ApiModelProperty(position = 5, notes = "도로명 주소", example = "경기 성남시 분당구 정자일로 95")
     private String address;
 
-    @JsonProperty("address_detail")
+    @JsonProperty("addressDetail")
     @ApiModelProperty(position = 6, notes = "상세주소", example = "3층")
     private String addressDetail;
 
