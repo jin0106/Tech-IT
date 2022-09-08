@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import SignUpType from "@pages/signup/SignUpType";
-import { HeadMeta } from "@components/HeadMeta";
-import { Container, ErrorText, Form, Input } from "@components/index";
-import useToastMessage from "@utils/useToast";
 import { useRouter } from "next/router";
+import SignUpType from "@pages/signup/SignUpType";
+import useToastMessage from "@utils/useToast";
 import useSignIn from "@hooks/query/useSignIn";
+import errorCode from "@utils/errorCode";
+import { Container, ErrorText, Form, Input } from "@components/index";
+import { HeadMeta } from "@components/HeadMeta";
 
 function SignIn() {
 	const router = useRouter();
@@ -16,7 +17,7 @@ function SignIn() {
 			router.push("/");
 		},
 		onError: (error) => {
-			useToastMessage(error.response!.data.error_code as string, "error");
+			useToastMessage(errorCode(error.response?.data.error_code as string), "error");
 		},
 	});
 
