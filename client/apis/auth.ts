@@ -17,6 +17,9 @@ const authApi = {
 		const { data } = await request.post<{ result: boolean }>("members/exist-email", email);
 		return data;
 	},
+	signIn: async ({ email, password }: Pick<SignUpType, "email" | "password">): Promise<AxiosResponse> => {
+		return await request.post("members/login", { email, password });
+	},
 };
 
 export default authApi;
