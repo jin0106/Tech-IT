@@ -35,11 +35,12 @@ public class MemberSaveRequest {
     public MemberSaveRequest() {
     }
 
-    public MemberSaveRequest(String email, String password, String username, String address,
+    public MemberSaveRequest(String email, String password, String username, String phoneNumber, String address,
         String addressDetail) {
         this.email = email;
         this.password = password;
         this.username = username;
+        this.phoneNumber = phoneNumber;
         this.address = address;
         this.addressDetail = addressDetail;
     }
