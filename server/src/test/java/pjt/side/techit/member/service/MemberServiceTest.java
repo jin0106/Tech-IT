@@ -78,4 +78,17 @@ class MemberServiceTest {
         assertThat(result).isEqualTo(1L);
     }
 
+    @Test
+    @DisplayName("이메일 중복검사를 할 경우 Response를 반환할 수 있다.")
+    void checkDuplicatedEmail() {
+        // given
+        when(memberRepository.existsByEmail(EMAIL)).thenReturn(true);
+
+        // when
+        CheckDuplicateResponse result = memberService.checkDuplicatedEmail(emailRequest);
+
+        // then
+        assertThat(result.getResult()).isEqualTo(true);
+    }
+
 }
