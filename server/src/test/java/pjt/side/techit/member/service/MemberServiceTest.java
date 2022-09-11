@@ -77,4 +77,5 @@ class MemberServiceTest {
         // then
         assertThat(result).isEqualTo(1L);
     }
+
 }
