@@ -1,12 +1,11 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import SignUpType from "@pages/signup/SignUpType";
 import authApi from "apis/auth";
+import errorCode from "types/errorCode";
 
-const useSignUp = (
-	options?: UseMutationOptions<AxiosResponse, Error, SignUpType>
-) => {
-	return useMutation<AxiosResponse, Error, SignUpType>(authApi.signUp, options);
+const useSignUp = (options?: UseMutationOptions<AxiosResponse, AxiosError<errorCode>, SignUpType>) => {
+	return useMutation<AxiosResponse, AxiosError<errorCode>, SignUpType>(authApi.signUp, options);
 };
 
 export default useSignUp;
