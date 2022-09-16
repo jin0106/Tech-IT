@@ -9,12 +9,22 @@ import authApi from "@apis/auth";
 import SignUpType from "./SignUpType";
 import { Form, HeadMeta, Input, ErrorText, Container, FindAddress } from "@components/index";
 import useToastMessage from "@utils/useToast";
-import toast, { Toaster } from "react-hot-toast";
+import errorCode from "@utils/errorCode";
 
 function SignUpPage() {
 	const [isExist, setIsExist] = useState(false);
 	const router = useRouter();
 	const address = useRecoilValue(addressState);
+	const { mutate: signUp } = useSignUp({
+		onSuccess: () => {
+			useToastMessage("Thank you. Your Registration has been completed successfully.", "success");
+			router.push("/signin");
+		},
+		onError: (error) => {
+			console.log(error);
+			useToastMessage(errorCode(error.response?.data.error_code as string), "error");
+		},
+	});
 	const {
 		register,
 		formState: { errors },
@@ -31,15 +41,6 @@ function SignUpPage() {
 		},
 	});
 
-	const { mutate: signUp } = useSignUp({
-		onSuccess: () => {
-			useToastMessage("Thank you. Your Registration has been completed successfully.", "success");
-			router.push("/signin");
-		},
-		onError: () => {
-			useToastMessage("Something is Wrong. Please try again", "error");
-		},
-	});
 	const checkDuplicate = async () => {
 		const { email } = getValues();
 		const { result } = await authApi.isEmailExist(email);
