@@ -14,8 +14,7 @@ describe("SignIn page", () => {
 		});
 
 		it("has password input", () => {
-			const password: HTMLInputElement =
-				screen.getByPlaceholderText("Password");
+			const password: HTMLInputElement = screen.getByPlaceholderText("Password");
 			expect(password).toBeInTheDocument();
 			expect(password.type).toBe("password");
 		});
