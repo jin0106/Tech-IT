@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import SignIn from ".";
+import SignIn from "../pages/signin";
 
 beforeEach(() => {
 	render(<SignIn />);

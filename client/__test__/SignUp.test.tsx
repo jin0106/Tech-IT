@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import SignUpPage from "./index";
+import SignUpPage from "../pages/signup/index";
 import { RecoilRoot } from "recoil";
 beforeEach(() => {
 	render(
