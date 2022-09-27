@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import SignUpPage from "./index";
+import SignUpPage from "../pages/signup/index";
 import { RecoilRoot } from "recoil";
 beforeEach(() => {
 	render(
@@ -17,10 +17,8 @@ describe("SignUp Page", () => {
 		});
 
 		it("has password input", () => {
-			const password: HTMLInputElement =
-				screen.getByPlaceholderText("Password");
-			const confirmPassword: HTMLInputElement =
-				screen.getByPlaceholderText("Confirm Password");
+			const password: HTMLInputElement = screen.getByPlaceholderText("Password");
+			const confirmPassword: HTMLInputElement = screen.getByPlaceholderText("Confirm Password");
 			expect(password).toBeInTheDocument();
 			expect(confirmPassword).toBeInTheDocument();
 			expect(password.type).toBe("password");
@@ -55,8 +53,7 @@ describe("SignUp Page", () => {
 			const Button = screen.getByRole("submit-button");
 			const emailInput = screen.getByPlaceholderText("Email Address");
 			const passwordInput = screen.getByPlaceholderText("Password");
-			const passwordConfirmInput =
-				screen.getByPlaceholderText("Confirm Password");
+			const passwordConfirmInput = screen.getByPlaceholderText("Confirm Password");
 			const nameInput = screen.getByPlaceholderText("Full Name");
 			const phoneInput = screen.getByPlaceholderText("Phone Number");
 			await userEvent.type(emailInput, "test123@gmail.com");

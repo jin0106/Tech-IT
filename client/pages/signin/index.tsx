@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { useRouter } from "next/router";
-import SignUpType from "@pages/signup/SignUpType";
+import SignUpType from "types/SignUpType";
 import useToastMessage from "@utils/useToast";
 import useSignIn from "@hooks/query/useSignIn";
 import errorCode from "@utils/errorCode";

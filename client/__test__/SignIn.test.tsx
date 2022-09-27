@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import SignIn from ".";
+import SignIn from "../pages/signin";
 
 beforeEach(() => {
 	render(<SignIn />);
@@ -14,8 +14,7 @@ describe("SignIn page", () => {
 		});
 
 		it("has password input", () => {
-			const password: HTMLInputElement =
-				screen.getByPlaceholderText("Password");
+			const password: HTMLInputElement = screen.getByPlaceholderText("Password");
 			expect(password).toBeInTheDocument();
 			expect(password.type).toBe("password");
 		});

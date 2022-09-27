@@ -1,4 +1,4 @@
-import SignUpType from "@pages/signup/SignUpType";
+import SignUpType from "types/SignUpType";
 import request from "./request";
 import { AxiosResponse } from "axios";
 
