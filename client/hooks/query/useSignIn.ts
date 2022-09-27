@@ -1,6 +1,6 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
-import SignUpType from "@pages/signup/SignUpType";
+import SignUpType from "types/SignUpType";
 import authApi from "apis/auth";
 import errorCode from "types/errorCode";
 

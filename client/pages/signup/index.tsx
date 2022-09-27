@@ -6,7 +6,7 @@ import { useRecoilValue } from "recoil";
 import { addressState } from "recoil/addressState";
 import useSignUp from "@hooks/query/useSignUp";
 import authApi from "@apis/auth";
-import SignUpType from "./SignUpType";
+import SignUpType from "../../types/SignUpType";
 import { Form, HeadMeta, Input, ErrorText, Container, FindAddress } from "@components/index";
 import useToastMessage from "@utils/useToast";
 import errorCode from "@utils/errorCode";
